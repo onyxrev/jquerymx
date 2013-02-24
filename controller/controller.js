@@ -53,6 +53,7 @@ steal('jquery/class', 'jquery/lang/string', 'jquery/event/destroyed', function( 
 			var method = typeof name == "string" ? context[name] : name;
 			return function() {
 				context.called = name;
+                                if (!$.isFunction(method)) return $.noop;
     			return method.apply(context, [this.nodeName ? $(this) : this].concat( slice.call(arguments, 0) ) );
 			};
 		},
